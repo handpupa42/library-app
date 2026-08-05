@@ -1,0 +1,293 @@
+/* ============================================
+     HEADER
+     ============================================ */
+     .header {
+      background: var(--primary);
+      color: var(--white);
+      padding: 16px 0;
+      box-shadow: var(--shadow);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 24px;
+      font-weight: 700;
+    }
+    
+    .logo-icon {
+      font-size: 32px;
+    }
+    
+    .nav {
+      display: flex;
+      gap: 8px;
+    }
+    
+    .nav a {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      border-radius: var(--radius);
+      transition: var(--transition);
+      font-weight: 500;
+      font-size: 15px;
+      color: rgba(255, 255, 255, 0.8);
+    }
+    
+    .nav a:hover {
+      background: rgba(255, 255, 255, 0.1);
+      color: var(--white);
+    }
+    
+    .nav a.active {
+      background: rgba(255, 255, 255, 0.15);
+      color: var(--white);
+    }
+    
+    .nav-badge {
+      background: var(--accent);
+      color: var(--white);
+      padding: 2px 10px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+    
+    /* ============================================
+       FOOTER
+       ============================================ */
+    .footer {
+      background: var(--primary);
+      color: rgba(255, 255, 255, 0.8);
+      padding: 20px 0;
+      margin-top: auto;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      font-size: 14px;
+    }
+    
+    .footer-contacts {
+      display: flex;
+      gap: 20px;
+    }
+    
+    /* ============================================
+       COMMON COMPONENTS
+       ============================================ */
+    .page-title {
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 8px;
+    }
+    
+    .page-subtitle {
+      color: var(--text-light);
+      font-size: 16px;
+      margin-bottom: 24px;
+    }
+  
+    
+    /* Buttons */
+    .btn {
+      padding: 8px 20px;
+      border: none;
+      border-radius: var(--radius);
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 600;
+      transition: var(--transition);
+      display: inline-block;
+    }
+    
+    .btn-primary {
+      background: var(--accent);
+      color: var(--white);
+    }
+    
+    .btn-primary:hover {
+      background: var(--accent-hover);
+      transform: translateY(-2px);
+    }
+    
+    .btn-outline {
+      background: transparent;
+      border: 2px solid var(--accent);
+      color: var(--accent);
+    }
+    
+    .btn-outline:hover {
+      background: var(--accent);
+      color: var(--white);
+    }
+    
+    .btn-block {
+      width: 100%;
+      text-align: center;
+    }
+  /* ============================================
+     HEADER
+     ============================================ */
+     .header {
+      background: var(--primary);
+      color: var(--white);
+      padding: 16px 0;
+      box-shadow: var(--shadow);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 24px;
+      font-weight: 700;
+    }
+    
+    .logo-icon {
+      font-size: 32px;
+    }
+    
+    .nav {
+      display: flex;
+      gap: 8px;
+    }
+    
+    .nav a {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      border-radius: var(--radius);
+      transition: var(--transition);
+      font-weight: 500;
+      font-size: 15px;
+      color: rgba(255, 255, 255, 0.8);
+    }
+    
+    .nav a:hover {
+      background: rgba(255, 255, 255, 0.1);
+      color: var(--white);
+    }
+    
+    .nav a.active {
+      background: rgba(255, 255, 255, 0.15);
+      color: var(--white);
+    }
+    
+    .nav-badge {
+      background: var(--accent);
+      color: var(--white);
+      padding: 2px 10px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+    
+    /* ============================================
+       FOOTER
+       ============================================ */
+    .footer {
+      background: var(--primary);
+      color: rgba(255, 255, 255, 0.8);
+      padding: 20px 0;
+      margin-top: auto;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      font-size: 14px;
+    }
+    
+    .footer-contacts {
+      display: flex;
+      gap: 20px;
+    }
+    
+    /* ============================================
+       COMMON COMPONENTS
+       ============================================ */
+    .page-title {
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 8px;
+    }
+    
+    .page-subtitle {
+      color: var(--text-light);
+      font-size: 16px;
+      margin-bottom: 24px;
+    }
+  
+    
+    /* Buttons */
+    .btn {
+      padding: 8px 20px;
+      border: none;
+      border-radius: var(--radius);
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 600;
+      transition: var(--transition);
+      display: inline-block;
+    }
+    
+    .btn-primary {
+      background: var(--accent);
+      color: var(--white);
+    }
+    
+    .btn-primary:hover {
+      background: var(--accent-hover);
+      transform: translateY(-2px);
+    }
+    
+    .btn-outline {
+      background: transparent;
+      border: 2px solid var(--accent);
+      color: var(--accent);
+    }
+    
+    .btn-outline:hover {
+      background: var(--accent);
+      color: var(--white);
+    }
+    
+    .btn-block {
+      width: 100%;
+      text-align: center;
+    }
+      
