@@ -1,0 +1,16 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es6",
+    "outDir": "out",
+    "lib": ["es6"],
+    "sourceMap": true,
+    "strict": true,
+    "paths": {
+      "@algonova/accepted-file-types": ["packages/accpeted-file-types/src/index.ts"],
+      "@algonova/vscode-integration": ["packages/vscode-integration/src/index.ts"]
+    }
+  },
+  "exclude": ["node_modules", ".vscode-test"]
+}

@@ -1,0 +1,11 @@
+{
+  "error---Failed to create a project config file": "Erro na criação do arquivo de configuração do projeto",
+  "error---File name collision": "Já existe um módulo com o mesmo nome de arquivo, favor renomear o arquivo!",
+  "error---Have newer version, project was updated": "O projeto foi reiniciado porque foi encontrada uma nova versão.",
+  "error---Packages update error": "Erro ao atualizar pacotes python",
+  "error---Upload file type limits": "Formato de arquivo inválido, os tipos de arquivo suportados são",
+  "error---Upload size limits": "O arquivo não deve estar vazio ou ter menos de 5Mb de tamanho",
+  "error---Upload wrong file name": "O nome do arquivo (diretório) deve conter apenas letras latinas, números, hífens ou sublinhados.",
+  "extension---update": "Por favor, aguarde, procurando por atualizações...",
+  "folders---Files": "Arquivos"
+}

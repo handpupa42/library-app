@@ -1,0 +1,11 @@
+{
+  "error---Failed to create a project config file": "Błąd podczas tworzenia pliku konfiguracyjnego projektu",
+  "error---File name collision": "Moduł o tej samej nazwie już istnieje. Proszę zmienić nazwę pliku!",
+  "error---Have newer version, project was updated": "Projekt został zrestartowany, ponieważ znaleziono nowszą wersję",
+  "error---Packages update error": "Błąd podczas aktualizacji pakietów Pythona",
+  "error---Upload file type limits": "Nieprawidłowy format pliku, obsługiwane typy to",
+  "error---Upload size limits": "Plik nie może być pusty albo większym niż 5 MB",
+  "error---Upload wrong file name": "Nazwa pliku (katalogu) musi zawierać tylko litery łacińskie, cyfry, myślniki lub podkreślenia",
+  "extension---update": "Proszę czekać, trwa sprawdzenie aktualizacji…",
+  "folders---Files": "Pliki"
+}

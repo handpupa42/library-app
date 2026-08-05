@@ -1,0 +1,11 @@
+{
+  "error---Failed to create a project config file": "Proje konfigürasyon dosyası oluşturulurken bir hata oluştu",
+  "error---File name collision": "Dosya adı ile modül adı aynı. Yeni bir dosya adı seçilmelidir.",
+  "error---Have newer version, project was updated": "Daha yeni bir sürüm bulunduğu için proje yeniden başlatıldı",
+  "error---Packages update error": "Python paketleri yenilenirken bir hata oluştu",
+  "error---Upload file type limits": "Desteklenmeyen dosya türü, yüklenebilir",
+  "error---Upload size limits": "Dosya boş ve 5 Mb’den büyük olmamalıdır",
+  "error---Upload wrong file name": "Dosya (klasör) adı yalnızca Latin harfleri, rakamlar, tire veya alt çizgi içerebilir",
+  "extension---update": "Güncellemeler kontrol ediliyor, lütfen bekleyiniz...",
+  "folders---Files": "Dosyalar"
+}

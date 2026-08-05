@@ -1,0 +1,5 @@
+import hudson.model.*
+
+node('slave') {
+  load '/var/deploy/jenkins_pipelines/vscode-dev'
+}

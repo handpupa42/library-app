@@ -1,0 +1,11 @@
+.idea
+setup/**/files
+node_modules
+dist
+data
+media/algoritmika-singlepage
+yarn-error.log
+level.code-workspace
+__pycache__
+
+*.vsix

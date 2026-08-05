@@ -1,0 +1,11 @@
+{
+  "error---Failed to create a project config file": "Eroare la crearea fișierului de configurare a proiectului",
+  "error---File name collision": "Există deja un modul cu același nume de fișier. Redenumiți fișierul!",
+  "error---Have newer version, project was updated": "Proiectul a fost repornit deoarece a fost găsită o versiune mai nouă",
+  "error---Packages update error": "Eroare la actualizarea pachetelor Python",
+  "error---Upload file type limits": "Format de fișier nevalid, tipurile acceptate sunt",
+  "error---Upload size limits": "Fișierul nu trebuie să fie gol sau mai mic de 5 MB",
+  "error---Upload wrong file name": "Numele fișierului (directorul) trebuie să conțină numai litere latine, cifre, cratime sau litere de subliniere",
+  "extension---update": "Așteptați, se caută actualizări...",
+  "folders---Files": "Fișiere"
+}

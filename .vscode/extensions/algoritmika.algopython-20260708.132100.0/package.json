@@ -1,0 +1,108 @@
+{
+	"name": "algopython",
+	"description": "Algonova platform extension",
+	"version": "20260708.132100.0",
+	"publisher": "algoritmika",
+	"engines": {
+		"vscode": "^1.46.0"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://bitbucket.org/algoritmikaorg/vscode.git"
+	},
+	"icon": "media/icon.png",
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [
+		"*"
+	],
+	"main": "./dist/extension.js",
+	"contributes": {
+		"commands": [
+			{
+				"command": "algoritmika.show",
+				"title": "Show algoritmika platform",
+				"category": "Algoritmika"
+			},
+			{
+				"command": "workbench.action.debug.start",
+				"title": "Open in browser",
+				"category": "Html",
+				"icon": {
+					"light": "resources/light/run-file.svg",
+					"dark": "resources/dark/run-file.svg"
+				}
+			}
+		],
+		"menus": {
+			"editor/title": [
+				{
+					"command": "workbench.action.debug.start",
+					"title": "Open in browser",
+					"group": "navigation",
+					"when": "resourceLangId == html"
+				}
+			]
+		},
+		"configuration": {
+			"id": "algopython",
+			"type": "object",
+			"title": "algopython",
+			"properties": {
+				"algopython.host": {
+					"description": "Platform host",
+					"scope": "resource",
+					"type": "string",
+					"enum": [
+						"learn.alg.academy",
+						"learn.my.algonova.com",
+						"learn.algonova.id",
+						"learn.algonova.mx",
+						"learn.algonova.lat",
+						"learn.algoritmika.az",
+						"learn.logikaschool.com"
+					],
+					"default": "learn.alg.academy"
+				}
+			}
+		}
+	},
+	"scripts": {
+		"vscode:prepublish": "EXTENSION_NAME=$npm_package_name webpack --mode production",
+		"compile": "webpack --mode none",
+		"watch": "webpack --mode none --watch",
+		"build": "webpack --mode none"
+	},
+	"devDependencies": {
+		"@types/node": "17.0.21",
+		"@types/rimraf": "3.0.0",
+		"@types/vscode": "1.46.0",
+		"child_process": "1.0.2",
+		"fork-ts-checker-webpack-plugin": "9.1.0",
+		"intl-messageformat": "7.8.4",
+		"node-fetch": "^3.3.0",
+		"raw-loader": "4.0.2",
+		"rimraf": "3.0.2",
+		"ts-loader": "9.3.0",
+		"typescript": "5.8.3",
+		"vsce": "1.88.0",
+		"vscode": "^1.1.37",
+		"vscode-test": "1.2.0",
+		"webpack": "5.100.2",
+		"webpack-cli": "6.0.1"
+	},
+	"__metadata": {
+		"id": "6c3d1354-4335-4d03-aebc-2c2a494a0536",
+		"publisherId": "45740897-e760-4b2b-a02b-0dde94fa6892",
+		"publisherDisplayName": "algoritmika",
+		"targetPlatform": "undefined",
+		"isApplicationScoped": false,
+		"isPreReleaseVersion": false,
+		"hasPreReleaseVersion": false,
+		"installedTimestamp": 1785056293847,
+		"pinned": false,
+		"preRelease": false,
+		"source": "gallery"
+	}
+}

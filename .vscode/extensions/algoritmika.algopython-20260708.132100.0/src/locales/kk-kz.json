@@ -1,0 +1,11 @@
+{
+  "error---Failed to create a project config file": "Конфигурация файлы мен проектті құру мүмкін емес",
+  "error---File name collision": "Файл атауы модуль атауымен бірдей. Файлға басқа атау беріңіз!",
+  "error---Have newer version, project was updated": "Жаңа версия табылғандықтан, проект қайта іске қосылды",
+  "error---Packages update error": "python пакеттерін жаңарты кезінде қателік орын алды",
+  "error---Upload file type limits": "Файлдың типі дұрыс емес, жүктеуге болады",
+  "error---Upload size limits": "Файл бос емес және 5Мб-тан кем болмауы керек",
+  "error---Upload wrong file name": "Файл (папка) атауы тек латын әріптерінен, сандардан, дефис және төменгі сызықтан тұра алады.",
+  "extension---update": "Күтіңіз, жаңартуларды тексеру жүріп жатыр...",
+  "folders---Files": "Файлдар"
+}

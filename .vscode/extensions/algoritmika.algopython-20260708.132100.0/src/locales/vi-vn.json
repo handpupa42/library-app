@@ -1,0 +1,11 @@
+{
+  "error---Failed to create a project config file": "Lỗi tạo file độ phân giải của dự án",
+  "error---File name collision": "Tên file trùng hợp với tên mô-đun. Cần đổi tên file!",
+  "error---Have newer version, project was updated": "Dự án đã được khởi động lại vì đã tìm được phiên bản mới hơn",
+  "error---Packages update error": "Gặo phải lỗi trong quá trình cập nhật các gói python",
+  "error---Upload file type limits": "Định dạng file không phù hợp, các định dạng phù hợp",
+  "error---Upload size limits": "File không được để trống hoặc nặng dưới 5MB",
+  "error---Upload wrong file name": "Tên file (tập tin) chỉ có thể chứa chữ cái la-tinh, chữ số, dấu gach ngang hoặc gach ngang dưới",
+  "extension---update": "Xin vui lòng đợi, đang kiểm tra các cập nhật…",
+  "folders---Files": "Các file"
+}

@@ -1,0 +1,12 @@
+{
+  "error---Failed to create a project config file": "Error creating the project config file",
+  "error---Failed to update extension": "Failed to update extension",
+  "error---File name collision": "A module with the same file name already exists. Please rename the file!",
+  "error---Have newer version, project was updated": "The project was restarted because a newer version was found",
+  "error---Packages update error": "Error while updating python packages",
+  "error---Upload file type limits": "Invalid file format, supported types are",
+  "error---Upload size limits": "File must not be empty or less than 5Mb",
+  "error---Upload wrong file name": "File (directory) name must contain only latin letters, numbers, hyphens, or underscores",
+  "extension---update": "Please wait, checking for updates...",
+  "folders---Files": "Files"
+}

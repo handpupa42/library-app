@@ -1,0 +1,11 @@
+{
+  "error---Failed to create a project config file": "Ошибка при создании файла конфигурации проекта",
+  "error---File name collision": "Имя файла совпадает с именем модуля. Необходимо переименовать файл!",
+  "error---Have newer version, project was updated": "Проект был перезагружен, т.к. обнаружена более новая версия",
+  "error---Packages update error": "Ошибка при обновлении пакетов python",
+  "error---Upload file type limits": "Неподдерживаемый тип файла, можно загружать",
+  "error---Upload size limits": "Файл должен быть не пустым и меньше 5Мб",
+  "error---Upload wrong file name": "Имя файла (папки) может содержать только латинские буквы, цифры, дефис или подчёркивание",
+  "extension---update": "Подождите, идет проверка обновлений...",
+  "folders---Files": "Файлы"
+}
