@@ -1,11 +1,11 @@
+import { Link } from 'react-router-dom';
 import type { IReader } from '../../../types/reader.types';
 
 interface ReaderCardProps {
   reader: IReader;
 }
-
 const ReaderCard = ({ reader }: ReaderCardProps) => {
-  const { fullName, email, activeBooks } = reader;
+  const { id, fullName, email, activeBooks } = reader;
 
   return (
     <div className="reader-card">
@@ -20,10 +20,11 @@ const ReaderCard = ({ reader }: ReaderCardProps) => {
             📚 Активных книг: <strong>{activeBooks.length}</strong>
           </span>
         </div>
-        <button className="btn btn-primary">Профиль</button>
+        <Link to={`/reader/${id}`} className="btn btn-primary">
+          Профиль
+        </Link>
       </div>
     </div>
   );
 };
-
 export default ReaderCard;

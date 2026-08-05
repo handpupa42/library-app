@@ -1,37 +1,17 @@
-import React from 'react';
-import type { ReactNode } from 'react';
+import { Outlet } from 'react-router-dom';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
-
-interface LayoutProps {
-  children: ReactNode;
-  activePage: 'books' | 'readers' | 'profile';
-  onNavigate: (page: 'books' | 'readers' | 'profile') => void;
-  booksCount: number;
-  readersCount: number;
-}
-
-const Layout: React.FC<LayoutProps> = ({
-  children,
-  activePage,
-  onNavigate,
-  booksCount,
-  readersCount,
-}) => {
+const Layout = () => {
   return (
     <div className="page-wrapper">
-      <Header
-        activePage={activePage}
-        onNavigate={onNavigate}
-        booksCount={booksCount}
-        readersCount={readersCount}
-      />
+      <Header />
       <main className="main-content">
-        {children}
+        <div className="container">
+          <Outlet /> 
+        </div>
       </main>
       <Footer />
     </div>
   );
 };
-
 export default Layout;
