@@ -34,5 +34,4 @@ const BookCard = ({ book }: BookCardProps) => {
     </article>
   );
 };
-
 export default BookCard;
