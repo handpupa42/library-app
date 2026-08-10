@@ -16,6 +16,7 @@ export const readerSlice = createSlice({
   name: 'readers',
   initialState,
   reducers: {
+    
     addReader: (state, action: PayloadAction<{ fullName: string; email: string; phone: string; }>) => {
       const newReader: IReader = {
         id: Date.now().toString(),
@@ -29,9 +30,27 @@ export const readerSlice = createSlice({
       state.readers.push(newReader);
       console.log(action); 
     },
+    issueBook: (state, action: PayloadAction<{ readerId: string; bookId: string; title: string; author: string }>) => {
+      const { readerId, bookId, title, author } = action.payload;
+      const reader = state.readers.find(r => r.id === readerId);
+      if (reader) {
+        reader.activeBooks.push({ bookId, title, author, issuedDate: new Date() });
+        reader.booksHistory.push({ bookId, title, author, issuedDate: new Date() });
+      }
+    },
+    returnBook: (state, action: PayloadAction<{ readerId: string; bookId: string }>) => {
+      const { readerId, bookId } = action.payload;
+      const reader = state.readers.find(r => r.id === readerId);
+      if (reader) {
+        reader.activeBooks = reader.activeBooks.filter(b => b.bookId !== bookId);
+        const historyEntry = reader.booksHistory.find(h => h.bookId === bookId && !h.returnedDate);
+        if (historyEntry) {
+          historyEntry.returnedDate = new Date();
+        }
+      }
   }
-});
-export const { addReader } = readerSlice.actions;
+}})
+export const { addReader, issueBook, returnBook } = readerSlice.actions;
 export const getCountReaders = (state: RootState) => state.readers.readers.length;
 export const getAllReaders = (state: RootState) => state.readers.readers;
 export default readerSlice.reducer;

@@ -51,9 +51,14 @@ export const booksSlice = createSlice({
         book.description = action.payload.description;
       }
     },
+    setBookAvailability: (state, action: PayloadAction<{ id: string; isAvailable: boolean }>) => {
+      const book = state.books.find((b) => b.id === action.payload.id);
+      if (book) {
+        book.isAvailable = action.payload.isAvailable;
+      }
   },
-});
-export const { addBook, updateBook } = booksSlice.actions;
+}});
+export const { addBook, updateBook, setBookAvailability } = booksSlice.actions;
 export const getAllBooks = (state: RootState) => state.books.books;
 export const getBookById = (state: RootState, bookId: string | undefined) =>
   state.books.books.find((book) => book.id === bookId);
