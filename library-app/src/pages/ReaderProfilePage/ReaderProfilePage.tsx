@@ -3,8 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import ReaderProfile from '../../components/readers/ReaderProfile/ReaderProfile';
 import { getAllReaders, issueBook, returnBook } from '../../store/readers-slice';
 import { getAllBooks, setBookAvailability } from '../../store/books-slice';
-import type { RootState, AppDispatch } from '../../store/store';
-
+import type {AppDispatch } from '../../store/store';
 const ReaderProfilePage = () => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
