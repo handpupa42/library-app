@@ -1,15 +1,22 @@
+export interface IActiveBook {
+  bookId: string;
+  title: string;
+  author: string;
+  issuedDate: Date;
+}
 export interface IBookHistory {
-    bookId: string;
-    takenAt: Date;
-    returnedAt?: Date;           // опционально (если не возвращена)
-  }
-  
-  export interface IReader {
-    id: string;
-    fullName: string;
-    email: string;
-    phone: string;
-    registrationDate: Date;
-    booksHistory: IBookHistory[];
-    activeBooks: string[];       // ID книг на руках
-  }
+  bookId: string;
+  title: string;
+  author: string;
+  issuedDate: Date;
+  returnedDate?: Date; 
+}
+export interface IReader {
+  id: string;
+  fullName: string;
+  email: string;
+  phone: string;
+  registrationDate: Date;
+  activeBooks: IActiveBook[];   // Книги на руках
+  booksHistory: IBookHistory[]; // История
+}
