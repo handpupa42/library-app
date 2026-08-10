@@ -1,19 +1,19 @@
-import ReaderCard from '../ReaderCard/ReaderCard';
-import type { IReader } from '../../../types/reader.types';
+import { useSelector } from "react-redux";
+import type { IReader } from "../../../types/reader.types";
+import ReaderCard from "../ReaderCard/ReaderCard";
+import { getAllReaders } from "../../../store/readers-slice";
 
-interface ReaderListProps {
-  readers: IReader[];
-}
-
-const ReaderList = ({ readers }: ReaderListProps) => {
+const ReaderList = () => {
+  const readers: IReader[] = useSelector(getAllReaders);
   return (
     <div className="reader-list">
-      {readers.map((reader) => (
-        <ReaderCard key={reader.id} reader={reader} />
-      ))}
+      {readers.map(reader => {
+        return (
+          <ReaderCard reader={reader} key={reader.id} />
+        );
+      })}
     </div>
   );
 };
-
 export default ReaderList;
 

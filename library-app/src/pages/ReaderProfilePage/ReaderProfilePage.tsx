@@ -1,51 +1,33 @@
-import React, { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import ReaderProfile from '../../components/readers/ReaderProfile/ReaderProfile';
-import { mockReaders } from '../../mocks/readers';
+import { getAllReaders } from '../../store/readers-slice';
 import { mockBooks } from '../../mocks/books';
 
-const ReaderProfilePage: React.FC = () => {
+const ReaderProfilePage = () => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
-
-  const initialReader = mockReaders.find((r) => r.id === id) || mockReaders[0];
-  const [reader, setReader] = useState(initialReader);
-
-  if (!reader) return <div>Читатель не найден</div>;
-  const handleIssueBook = (bookId: string, title: string, author: string) => {
-    const today = new Date();
-
-    const newActiveBook = { bookId, title, author, issuedDate: today };
-    const newHistoryEntry = { bookId, title, author, issuedDate: today };
-
-    setReader({
-      ...reader,
-      activeBooks: [...reader.activeBooks, newActiveBook],
-      booksHistory: [...reader.booksHistory, newHistoryEntry],
-    });
-  };
-  const handleReturnBook = (bookId: string) => {
-    if (window.confirm('Принять возврат книги?')) {
-      const today = new Date();
-      setReader({
-        ...reader,
-        activeBooks: reader.activeBooks.filter((b) => b.bookId !== bookId),
-        booksHistory: reader.booksHistory.map((h) =>
-          h.bookId === bookId && !h.returnedDate
-            ? { ...h, returnedDate: today }
-            : h
-        ),
-      });
-    }
-  };
+  const readers = useSelector(getAllReaders);
+  const reader = readers.find((r) => r.id === id);
+  if (!reader) {
+    return (
+      <div className="container" style={{ textAlign: 'center', padding: '50px 0' }}>
+        <h2>Читатель не найден</h2>
+        <p style={{ margin: '15px 0' }}>Пользователь с таким ID не существует.</p>
+        <button onClick={() => navigate('/readers')} className="btn btn-secondary">
+          Назад к списку читателей
+        </button>
+      </div>
+    );
+  }
 
   return (
     <ReaderProfile
       reader={reader}
       allBooks={mockBooks}
       onBack={() => navigate(-1)}
-      onIssue={handleIssueBook}
-      onReturn={handleReturnBook}
+      onIssue={() => {}} 
+      onReturn={() => {}}
     />
   );
 };
