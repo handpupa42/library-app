@@ -1,54 +1,96 @@
-import { useParams, useNavigate } from 'react-router-dom';
-import { mockBooks } from '../../mocks/books';
-
+import { useState } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { getBookById } from '../../store/books-slice';
+import type { RootState } from '../../store/store';
+import EditBookForm from '../../components/books/EditBookForm/EditBookForm';
 const BookDetailPage = () => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
 
-  const book = mockBooks.find((b) => b.id === id);
-
+  const book = useSelector((state: RootState) => {
+    return getBookById(state, id);
+  });
+  
+  const [isEditMode, setIsEditMode] = useState(false);
   if (!book) {
     return (
-      <div style={{ textAlign: 'center', padding: '40px 0' }}>
-        <h2>Книга не найдена</h2>
-        <button onClick={() => navigate('/books')} className="btn btn-secondary">
+      <div className="not-found">
+        <h1>Книга не найдена</h1>
+
+        <button
+          type="button"
+          className="btn btn-secondary"
+          onClick={() => navigate('/books')}
+        >
           Назад к каталогу
         </button>
       </div>
     );
   }
 
+  if (isEditMode) {
+    return (
+      <div className="book-detail-page">
+        <EditBookForm
+          book={book}
+          onCancel={() => setIsEditMode(false)}
+        />
+      </div>
+    );
+  }
   return (
-    <div style={{ padding: '20px 0' }}>
-      <button onClick={() => navigate(-1)} className="btn btn-secondary" style={{ marginBottom: '20px' }}>
+    <div className="book-detail-page">
+      <button
+        type="button"
+        className="btn btn-secondary"
+        onClick={() => navigate(-1)}
+      >
         ← Назад
       </button>
 
-      <div style={{ display: 'flex', gap: '30px', alignItems: 'flex-start' }}>
-        <div className="book-cover-placeholder" style={{ width: '200px', height: '260px', fontSize: '60px' }}>
-          📖
+      <div className="book-detail">
+        <div className="book-cover-placeholder">
+          <span className="book-cover-emoji">📖</span>
         </div>
-        <div>
-          <h1 className="page-title" style={{ textAlign: 'left', marginBottom: '10px' }}>
-            {book.title}
-          </h1>
-          <p style={{ fontSize: '18px', color: '#666', marginBottom: '15px' }}>
-            Автор: <strong>{book.author}</strong>
+
+        <div className="book-detail-content">
+          <h1>{book.title}</h1>
+
+          <p>
+            <strong>Автор:</strong> {book.author}
           </p>
-          <div className="book-meta" style={{ marginBottom: '15px' }}>
-            <span>Год: {book.year}</span>
-            <span>Жанр: {book.genre}</span>
-            <span className={`badge ${book.isAvailable ? 'badge-available' : 'badge-unavailable'}`}>
-              {book.isAvailable ? 'Доступна' : 'Выдана'}
-            </span>
-          </div>
-          <p style={{ fontSize: '16px', lineHeight: '1.6', marginTop: '20px' }}>
-            {book.description}
+
+          <p>
+            <strong>Год издания:</strong> {book.year}
           </p>
+
+          <p>
+            <strong>Жанр:</strong> {book.genre}
+          </p>
+
+          <p>
+            <strong>Статус:</strong>{' '}
+            {book.isAvailable ? 'Доступна' : 'Выдана'}
+          </p>
+
+          {book.description && (
+            <p>
+              <strong>Описание:</strong>{' '}
+              {book.description}
+            </p>
+          )}
+
+          <button
+            type="button"
+            className="btn btn-primary"
+            onClick={() => setIsEditMode(true)}
+          >
+            Редактировать книгу
+          </button>
         </div>
       </div>
     </div>
   );
 };
-
 export default BookDetailPage;
