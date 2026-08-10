@@ -7,14 +7,11 @@ export const mockReaders: IReader[] = [
     email: 'ivan@mail.ru',
     phone: '+7-999-123-45-67',
     registrationDate: new Date('2024-01-15'),
-    activeBooks: [
-      { bookId: '1', title: 'Мастер и Маргарита', author: 'Михаил Булгаков', issuedDate: new Date('2024-08-15') }
-    ],
     booksHistory: [
-      { bookId: '2', title: 'Война и мир', author: 'Лев Толстой', issuedDate: new Date('2024-02-01'), returnedDate: new Date('2024-03-15') },
-      { bookId: '3', title: 'Преступление и наказание', author: 'Фёдор Достоевский', issuedDate: new Date('2024-03-20'), returnedDate: new Date('2024-04-10') },
-      { bookId: '1', title: 'Мастер и Маргарита', author: 'Михаил Булгаков', issuedDate: new Date('2024-08-15') }
-    ]
+      { bookId: '2', takenAt: new Date('2024-02-01'), returnedAt: new Date('2024-03-15') },
+      { bookId: '1', takenAt: new Date('2024-08-15') }
+    ],
+    activeBooks: ['1']
   },
   {
     id: 'r2',
@@ -22,12 +19,9 @@ export const mockReaders: IReader[] = [
     email: 'maria@mail.ru',
     phone: '+7-999-234-56-78',
     registrationDate: new Date('2024-02-20'),
-    activeBooks: [
-      { bookId: '2', title: 'Война и мир', author: 'Лев Толстой', issuedDate: new Date('2024-05-10') }
-    ],
     booksHistory: [
-      { bookId: '4', title: 'Евгений Онегин', author: 'Александр Пушкин', issuedDate: new Date('2024-03-01'), returnedDate: new Date('2024-04-15') },
-      { bookId: '2', title: 'Война и мир', author: 'Лев Толстой', issuedDate: new Date('2024-05-10') }
-    ]
+      { bookId: '2', takenAt: new Date('2024-05-10') }
+    ],
+    activeBooks: ['2']
   }
 ];

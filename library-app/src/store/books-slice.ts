@@ -1,65 +1,105 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
+import axios from 'axios';
 import { mockBooks } from '../mocks/books';
 import type { IBook } from '../types/book.types';
-import type { RootState } from './store'; 
+import type { RootState } from './store';
+const API_BASE_URL = 'http://localhost:3000';
+export const fetchBooks = createAsyncThunk(
+  'books/fetchAll', 
+  async (_, { rejectWithValue }) => {
+    try {
+      const response = await axios.get(`${API_BASE_URL}/books`);
+      return response.data;
+    } catch (error: any) {
+      return rejectWithValue(error.response?.data || error.message);
+    }
+  }
+);
+export const addBook = createAsyncThunk(
+  'books/addBook', 
+  async (
+    newBookData: {
+      title: string;
+      author: string;
+      year: number;
+      genre: string;
+      description: string;
+    }, 
+    { rejectWithValue }
+  ) => {
+    try {
+      const response = await axios.post(`${API_BASE_URL}/books`, newBookData);
+      return response.data; 
+    } catch (error: any) {
+      return rejectWithValue(error.response?.data || error.message);
+    }
+  }
+);
+const initialState = {
+  items: mockBooks as IBook[],
+  status: 'idle' as 'idle' | 'loading' | 'succeeded' | 'failed',
+  error: null as string | null,
+};
 
-type BooksState = {
-  books: IBook[];
-};
-type NewBookPayload = { 
-  title: string;
-  author: string;
-  year: number;
-  genre: string;
-  description: string;
-};
-type UpdateBookPayload = { 
-  id: string;
-  title: string;
-  author: string;
-  year: number;
-  genre: string;
-  description: string;
-};
-const initialState: BooksState = {
-  books: mockBooks,
-};
 export const booksSlice = createSlice({
   name: 'books',
   initialState,
   reducers: {
-    addBook: (state, action: PayloadAction<NewBookPayload>) => {
-      const newBook: IBook = {
-        id: Date.now().toString(),
-        title: action.payload.title,
-        author: action.payload.author,
-        year: action.payload.year,
-        genre: action.payload.genre,
-        description: action.payload.description,
-        isAvailable: true,
-      };
-      state.books.push(newBook);
-    },
-    updateBook: (state, action: PayloadAction<UpdateBookPayload>) => {
-      const book = state.books.find((item) => item.id === action.payload.id);
-      if (book) {
-        book.title = action.payload.title;
-        book.author = action.payload.author;
-        book.year = action.payload.year;
-        book.genre = action.payload.genre;
-        book.description = action.payload.description;
-      }
+    clearBooks: (state) => {
+      state.items = [];
+      state.status = 'idle';
+      state.error = null;
     },
     setBookAvailability: (state, action: PayloadAction<{ id: string; isAvailable: boolean }>) => {
-      const book = state.books.find((b) => b.id === action.payload.id);
+      const book = state.items.find((b) => b.id === action.payload.id);
       if (book) {
         book.isAvailable = action.payload.isAvailable;
       }
+    },
+    updateBook: (state, action: PayloadAction<IBook>) => {
+      const index = state.items.findIndex((item) => item.id === action.payload.id);
+      if (index !== -1) {
+        state.items[index] = action.payload;
+      }
+    }
   },
-}});
-export const { addBook, updateBook, setBookAvailability } = booksSlice.actions;
-export const getAllBooks = (state: RootState) => state.books.books;
-export const getBookById = (state: RootState, bookId: string | undefined) =>
-  state.books.books.find((book) => book.id === bookId);
+  extraReducers: (builder) => {
+    builder
+      .addCase(fetchBooks.pending, (state) => {
+        state.status = 'loading';
+        state.error = null;
+      })
+      .addCase(fetchBooks.fulfilled, (state, action) => {
+        state.status = 'succeeded';
+        state.items = action.payload;
+      })
+      .addCase(fetchBooks.rejected, (state, action: any) => {
+        state.status = 'failed';
+        state.error = action.payload || 'Произошла ошибка загрузки';
+      })
+
+      .addCase(addBook.pending, (state) => {
+        state.status = 'loading';
+      })
+      .addCase(addBook.fulfilled, (state, action) => {
+        state.status = 'succeeded';
+        state.items.push(action.payload);
+      })
+      .addCase(addBook.rejected, (state, action: any) => {
+        state.status = 'failed';
+        state.error = action.payload || 'Произошла ошибка добавления';
+      });
+  },
+});
+
+
+export const { clearBooks, setBookAvailability, updateBook } = booksSlice.actions;
+export const getAllBooks = (state: RootState) => state.books.items;
+export const getBookById = (state: RootState, id: string | undefined) => 
+  state.books.items.find(b => b.id === id); 
+
+export const selectBooksStatus = (state: RootState) => state.books.status;
+export const selectBooksError = (state: RootState) => state.books.error;
 export default booksSlice.reducer;
+
