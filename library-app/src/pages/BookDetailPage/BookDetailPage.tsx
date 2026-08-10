@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { getBookById } from '../../store/books-slice';
+import getBookById from "../../store/books-slice";
 import type { RootState } from '../../store/store';
 import EditBookForm from '../../components/books/EditBookForm/EditBookForm';
 const BookDetailPage = () => {
