@@ -53,9 +53,17 @@
       "genre": "Сказка",
       "isAvailable": true,
       "description": "Философская сказка о дружбе, любви и ответственности."
+    },
+    {
+      "title": "ffffff",
+      "author": "вввв",
+      "year": 1222,
+      "genre": "а",
+      "description": "",
+      "isAvailable": true,
+      "id": "PUuim-M1V7w"
     }
   ],
-  "readers": []
+  "readers": [],
+  "$schema": "./node_modules/json-server/schema.json"
 }
-
-  
