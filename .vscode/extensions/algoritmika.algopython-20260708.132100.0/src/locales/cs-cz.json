@@ -1,0 +1,11 @@
+{
+  "error---Failed to create a project config file": "Chyba při vytváření konfiguračního souboru projektu",
+  "error---File name collision": "Název souboru odpovídá názvu modulu. Je třeba přejmenovat soubor!",
+  "error---Have newer version, project was updated": "Projekt byl restartován, protože byla nalezena novější verze",
+  "error---Packages update error": "Chyba při aktualizaci balíčků python",
+  "error---Upload file type limits": "Nepodporovaný typ souboru, lze nahrat",
+  "error---Upload size limits": "Soubor by neměl být prázdný a musí být menší než 5 MB",
+  "error---Upload wrong file name": "Název souboru (složky) může obsahovat pouze latinská písmena, číslice, pomlčku nebo podtržítko",
+  "extension---update": "Počkejte prosím, ověřujeme atualizace ...",
+  "folders---Files": "soubory"
+}

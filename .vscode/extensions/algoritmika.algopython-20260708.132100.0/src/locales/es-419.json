@@ -1,0 +1,11 @@
+{
+  "error---Failed to create a project config file": "No se pudo crear el archivo de configuración del proyecto",
+  "error---File name collision": "Colisión de nombres de archivos",
+  "error---Have newer version, project was updated": "Hay una versión más nueva, el proyecto se actualizó",
+  "error---Packages update error": "Error al actualizar paquetes",
+  "error---Upload file type limits": "Límites de tipo de archivo a subir",
+  "error---Upload size limits": "Límites de tamaño de subida",
+  "error---Upload wrong file name": "El nombre del archivo (carpeta) solo puede contener letras latinas, números, guiones o guiones bajos",
+  "extension---update": "Espera, comprobando actualizaciones...",
+  "folders---Files": "Archivos"
+}

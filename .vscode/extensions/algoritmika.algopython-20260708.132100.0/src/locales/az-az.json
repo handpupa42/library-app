@@ -1,0 +1,11 @@
+{
+  "error---Failed to create a project config file": "Layihə konfiqurasiya faylı yaradılarkən xəta baş verdi",
+  "error---File name collision": "Fayl adı modul adı ilə eynidir. Faylın adını dəyişdirin!",
+  "error---Have newer version, project was updated": "Daha yeni versiya tapıldığı üçün layihə yenidən yükləndi",
+  "error---Packages update error": "Python paketləri yenilənərkən xəta baş verdi",
+  "error---Upload file type limits": "Dəstəklənməyən fayl növü, yükləmək olar",
+  "error---Upload size limits": "Fayl boş olmamalı və 5Mb-dan kiçik olmalıdır",
+  "error---Upload wrong file name": "Fayl (qovluq) adı yalnız latın hərfləri, rəqəmlər, defis və ya alt xətt ehtiva edə bilər",
+  "extension---update": "Gözləyin, yeniləmələr yoxlanılır...",
+  "folders---Files": "Fayllar"
+}
