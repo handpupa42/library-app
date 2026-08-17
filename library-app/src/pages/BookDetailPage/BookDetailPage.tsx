@@ -4,14 +4,22 @@ import { useSelector } from 'react-redux';
 import { getBookById } from '../../store/books-slice';
 import type { RootState } from '../../store/store';
 import EditBookForm from '../../components/books/EditBookForm/EditBookForm';
+
 const BookDetailPage = () => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
   const book = useSelector((state: RootState) => getBookById(state, id));
   const [isEditMode, setIsEditMode] = useState(false);
+  const handleGoBack = () => {
+    if (window.history.length > 1) {
+      navigate(-1);
+    } else {
+      navigate('/books');
+    }
+  };
   if (!book) {
     return (
-      <div className="not-found" style={{ textAlign: 'center', padding: '50px 0' }}>
+      <div className="container" style={{ textAlign: 'center', padding: '50px 0' }}>
         <h1>Книга не найдена</h1>
         <button type="button" className="btn btn-secondary" onClick={() => navigate('/books')}>
           Назад к каталогу
@@ -22,25 +30,22 @@ const BookDetailPage = () => {
   if (isEditMode) {
     return (
       <div className="container" style={{ padding: '20px 0' }}>
-        <EditBookForm
-          book={book}
-          onCancel={() => setIsEditMode(false)}
-        />
+        <EditBookForm book={book} onCancel={() => setIsEditMode(false)} />
       </div>
     );
   }
   return (
-    <div className="book-detail-page">
+    <div className="container" style={{ padding: '20px 0' }}>
       <button
         type="button"
         className="btn btn-secondary"
-        onClick={() => navigate(-1)} 
+        onClick={handleGoBack}
         style={{ marginBottom: '20px' }}
       >
         ← Назад
       </button>
       <div className="book-detail" style={{ display: 'flex', gap: '30px', alignItems: 'flex-start' }}>
-        <div className="book-cover-placeholder" style={{ width: '200px', height: '260px', fontSize: '60px' }}>
+        <div className="book-cover-placeholder" style={{ width: '200px', height: '260px', fontSize: '60px', display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#f0f0f0', borderRadius: '8px' }}>
           📖
         </div>
         <div className="book-detail-content">
@@ -65,4 +70,5 @@ const BookDetailPage = () => {
     </div>
   );
 };
+
 export default BookDetailPage;
