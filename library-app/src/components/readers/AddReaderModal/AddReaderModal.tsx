@@ -1,80 +1,106 @@
-import { useDispatch } from 'react-redux';
-import { useRef, type FormEventHandler } from 'react';
-import { addReader } from '../../../store/readers-slice';
-type Props = {
-  handleClose: () => void;
+import { useState } from 'react';
+interface AddReaderModalProps {
+  isOpen: boolean;
+  onClose: () => void;
 }
-const AddReaderModal = ({ handleClose }: Props) => {
-  const fullNameRef = useRef<HTMLInputElement>(null);
-  const emailRef = useRef<HTMLInputElement>(null);
-  const phoneRef = useRef<HTMLInputElement>(null);
-  const dispatch = useDispatch();
+const AddReaderModal = ({ isOpen, onClose }: AddReaderModalProps) => {
+  const [fullName, setFullName] = useState('');
+  const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState('');
+  const [errors, setErrors] = useState<Record<string, string>>({});
 
-  const formatPhone = (value: string) => {
-    const numbers = value.replace(/\D/g, '').replace(/^7/, '').slice(0, 10);
-  
-    let result = '+7';
-  
-    if (numbers.length > 0) {
-      result += ` (${numbers.slice(0, 3)}`;
+  const validate = () => {
+    const newErrors: Record<string, string> = {};
+
+    if (!fullName.trim()) newErrors.fullName = 'ФИО обязательно';
+    if (!email.trim()) newErrors.email = 'Email обязателен';
+    if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      newErrors.email = 'Некорректный email';
     }
-  
-    if (numbers.length >= 3) {
-      result += ')';
+    if (!phone.trim()) newErrors.phone = 'Телефон обязателен';
+    if (phone && !/^\+?[0-9\s\-()]{10,15}$/.test(phone)) {
+      newErrors.phone = 'Некорректный телефон';
     }
-  
-    if (numbers.length > 3) {
-      result += ` ${numbers.slice(3, 6)}`;
-    }
-  
-    if (numbers.length > 6) {
-      result += `-${numbers.slice(6, 8)}`;
-    }
-  
-    if (numbers.length > 8) {
-      result += `-${numbers.slice(8, 10)}`;
-    }
-  
-    return result;
+
+    return newErrors;
   };
 
-  const submitHandler: FormEventHandler<HTMLFormElement> = (e) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
-    dispatch(addReader({
-      fullName: fullNameRef.current?.value,
-      email: emailRef.current?.value,
-      phone: phoneRef.current?.value
-    }));
-    handleClose();
-  };
-  return (
-    <div className="modal-overlay">
-      <div className="modal">
-        <h2>Добавить читателя</h2>
-        <form onSubmit={submitHandler}>
-          <input id="fullName" ref={fullNameRef} type="text" placeholder="ФИО" />
-          <input id="email" ref={emailRef} type="email" placeholder="Email" />
-          <label htmlFor="phone">Номер телефона</label>
-          <label htmlFor="phone">Номер телефона</label>
-          <input
-        id="phone"
-            ref={phoneRef}
-            type="tel"
-            placeholder="+7 (999) 123-45-67"
-            defaultValue="+7 "
-            inputMode="tel"
-            maxLength={18}
-            pattern="\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}"
-            onInput={(event) => {
-                const input = event.currentTarget;
-                input.value = formatPhone(input.value);
-            }}
-            />
+    const newErrors = validate();
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors);
+      return;
+    }
 
-          
-          <button type="submit" className="btn btn-primary">Сохранить</button>
-          <button type="button" className="btn btn-secondary" onClick={handleClose}>Отмена</button>
+    console.log({ fullName, email, phone });
+
+    setFullName('');
+    setEmail('');
+    setPhone('');
+    setErrors({});
+    onClose();
+  };
+  const handleClose = () => {
+    setFullName('');
+    setEmail('');
+    setPhone('');
+    setErrors({});
+    onClose();
+  };
+  if (!isOpen) return null;
+  return (
+    <div className="modal-overlay" onClick={handleClose}>
+      <div className="modal" onClick={(e) => e.stopPropagation()}>
+        <div className="modal-header">
+          <h2>Регистрация читателя</h2>
+          <button className="modal-close" onClick={handleClose}>×</button>
+        </div>
+
+        <form onSubmit={handleSubmit}>
+          <div className="form-group">
+            <label htmlFor="fullName">ФИО *</label>
+            <input
+              id="fullName"
+              type="text"
+              value={fullName}
+              onChange={(e) => setFullName(e.target.value)}
+              className={errors.fullName ? 'error' : ''}
+            />
+            {errors.fullName && <span className="error-text">{errors.fullName}</span>}
+          </div>
+
+          <div className="form-group">
+            <label htmlFor="email">Email *</label>
+            <input
+              id="email"
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              className={errors.email ? 'error' : ''}
+            />
+            {errors.email && <span className="error-text">{errors.email}</span>}
+          </div>
+          <div className="form-group">
+            <label htmlFor="phone">Телефон *</label>
+            <input
+              id="phone"
+              type="tel"
+              value={phone}
+              onChange={(e) => setPhone(e.target.value)}
+              className={errors.phone ? 'error' : ''}
+            />
+            {errors.phone && <span className="error-text">{errors.phone}</span>}
+          </div>
+          <div className="modal-footer">
+            <button type="button" className="btn btn-outline" onClick={handleClose}>
+              Отмена
+            </button>
+            <button type="submit" className="btn btn-primary">
+              Зарегистрировать
+            </button>
+          </div>
         </form>
       </div>
     </div>
